@@ -48,3 +48,26 @@ Use an `index.html`:
 </html>
 ```
 
+# Typed Components
+
+Include the typings into the project:
+
+    npm install @types/react @types/react-dom --save
+
+The component definition is React.Component<P,S> - P for Props, S for State.
+
+```
+    interface IWord {
+        text: string;
+    }
+
+    class Word extends React.Component<IWord,{}> {
+    render() {
+        return (
+            <div>
+                {this.props.text}
+            </div>
+        );
+    }
+    }
+```
