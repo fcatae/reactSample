@@ -2,17 +2,22 @@ class App extends React.Component<{},{}> {
    render() {
       return (
          <div>
-            <Words/>
+            <Word text="Hello"/>
+            <Word text="Word"/>
          </div>
       );
    }
 }
 
-class Words extends React.Component<{},{}> {
+interface IWord {
+    text: string;
+}
+
+class Word extends React.Component<IWord,{}> {
    render() {
       return (
          <div>
-            Hello Word!!!
+            {this.props.text}
          </div>
       );
    }
