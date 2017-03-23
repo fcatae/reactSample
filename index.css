@@ -1,11 +1,17 @@
 .word {
-    border: 1px solid black;
     border-radius: 5px;
     padding: .2rem;
     margin: .1rem;
-    min-width: 10rem;
 }
 
-.color-orange {
+.color-normal {
+    border: 1px solid lightslategray;
+}
+
+.color-ignore {    
+}
+
+.color-highlight {
+    border: 1px solid darkorange;
     background-color: orange;
 }
