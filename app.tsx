@@ -3,24 +3,33 @@ class App extends React.Component<{},{}> {
    render() {
       return (
          <div>
-            <Word text="Hello"/>
-            <Word text="Word" wordState={WordState.Highlight} />
-            <Word text="1" wordState={WordState.Ignore} />
+            <Phrase text="Hello 1 2 3 World"/>
          </div>
       );
    }
 }
 
-class Phrase extends React.Component<IWord,{}> {
+interface IPhraseProps {
+    text: string;
+}
+
+class Phrase extends React.Component<IPhraseProps,{}> {
 
     render() {
-      return (
-         <div>
-            <Word text="Hello"/>
-            <Word text="Word" wordState={WordState.Highlight} />
-            <Word text="1" wordState={WordState.Ignore} />
-         </div>
-      );
+        let getWords = (t :string) => t.split(' ');
+        let toWordState = (word: string) : WordState => {
+                if( word.length <= 3 ) {
+                    return WordState.Ignore;
+                }
+                return WordState.Highlight;
+            };
+
+        let words = getWords ( this.props.text );
+        let wordList = words.map(w => {
+                return <Word text={w} wordState={ toWordState(w) }/>
+            });
+
+      return <div>{wordList}</div>;
    }
 }
 
